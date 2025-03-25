@@ -1,0 +1,244 @@
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #202D42, #285BAF);
+    perspective: 1000px;
+}
+
+@keyframes glowwhite {
+    from {
+        box-shadow:
+            0 0 0.1em #ffffff6d,
+            0 0 0.2em #ffffff7a;
+
+    }
+
+    to {
+        box-shadow:
+            0 0 0.3em #ffffffac,
+            0 0 0.4em #ffffff;
+
+    }
+}
+
+
+.container {
+    width: 300px;
+    height: 600px;
+}
+
+.phone {
+    width: 100%;
+    height: 100%;
+    background: #1e1e1e;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease-out;
+    transform-style: preserve-3d;
+    padding-top: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 8;
+    transform: translateZ(10px);
+}
+
+.phone-depth {
+    position: absolute;
+    width: 101%;
+    height: 101%;
+    background: #111;
+    border-radius: 40px;
+    z-index: 0;
+    transition: transform 0.5s ease-out;
+    transform: rotateZ(0px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+
+}
+
+.screen {
+    width: 90%;
+    margin: 2% auto 4%;
+    background: #fff;
+    border-radius: 30px;
+    animation: glowwhite 3s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex: 1;
+    z-index: 9;
+}
+
+
+.top-phone {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin-left: 20%;
+    margin-top: 1%;
+    margin-bottom: 0%;
+}
+
+.top-phone-line,
+.top-phone-circle,
+.home-line {
+    background: #000;
+    border-radius: 50px;
+    height: 6px;
+    margin-left: 5%
+}
+
+
+.top-phone-line {
+    width: 40%;
+}
+
+.top-phone-circle {
+    width: 6px;
+    height: 6px;
+}
+
+.home-line {
+    width: 40%;
+    margin-bottom: 2%;
+    opacity: 0.6;
+    margin-left: 5%;
+}
+
+.card {
+    filter: brightness(1);
+    transition: transform 0.2s ease-out, filter 0.4s ease;
+    transform-style: preserve-3d;
+    width: 80%;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
+    background-size: 110%;
+    background-position: center;
+    flex: 0.26;
+    border-radius: 15px;
+}
+
+.card:hover {
+    filter: brightness(0.95);
+    transform: translateY(-5px);
+}
+
+#id-card {
+    background-image: url('resources/id.png');
+    margin-top: 30%;
+}
+
+#card-2 {
+    margin-top: 24%;
+    z-index: 10;
+    background-image: url('resources/meal.png');
+    position: relative;
+    filter: brightness(0.9)
+}
+
+#card-3 {
+    margin-top: -39%;
+    z-index: 11;
+    filter: brightness(0.95);
+    box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.3);
+    background-image: url('resources/lib.png');
+    position: relative;
+}
+
+/* that one is meant to hold the perspective */
+.phone-wrapper {
+    position: relative;
+    perspective: 1000px;
+    width: 300px;
+    height: 600px;
+}
+
+.side-button {
+    position: absolute;
+    width: 6px;
+    height: 40px;
+    background: #212121;
+    border-radius: 2px;
+}
+
+.side-button.left {
+    left: -3px;
+    top: 120px;
+}
+
+.side-button.right {
+    right: -3px;
+    top: 180px;
+}
+
+.line {
+    margin-top: 92%;
+    width: 70%;
+    height: 1px;
+    background: #00000029;
+    position: absolute;
+}
+
+.other-cards, .matric-card-title {
+    position: absolute;
+    margin-top: 90%;
+    color: #082d8a;
+    /* change this ugly ass font  */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.add-wallet-btn {
+    position: absolute;
+    width: 90px;
+    height: 30px;
+    border-radius: 25px;
+    border: none;
+    background-color: #1e3590;
+    transition: transform 0.2s ease-out;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.add-wallet-btn:hover {
+    transform: translateY(-2px);
+    background-color: #495eb1;
+}
+
+.add-wallet {
+    margin-top: 78%;
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.matric-card-title {
+    margin-top: 10%;
+}
+
+.menu-icon {
+    position: absolute;
+    margin-top: 3%;
+    margin-right: 69%;
+    transition: transform 0.2s ease-out;
+}
+/* .menu-icon:hover {
+    transform: scale(1.1);
+} */
+
+.menu-line {
+    transition: transform 0.3s ease-out;
+
+}
+
+/* .menu-line:hover {
+    transform: translateY(2px);
+    transform: translateX(2px);
+} */

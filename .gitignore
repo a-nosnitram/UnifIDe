@@ -1,0 +1,25 @@
+# dependencies
+/node_modules
+
+# logs
+logs
+*.log
+
+# dotenv
+.env
+
+# mac shit
+._*
+.DS_Store
+Thumbs.db
+
+# build output
+dist/
+build/
+
+# IDE settings
+.vscode/
+.idea/
+*.sw?
+
+
