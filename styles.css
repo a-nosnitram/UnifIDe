@@ -37,7 +37,8 @@ html {
     background: #1e1e1e;
     border-radius: 40px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease-out;
+    transition: transform 0.5s ease-out, translate 1s ease-out;
+    /* transition: all 0.5s ease-out; */
     transform-style: preserve-3d;
     padding-top: 1%;
     display: flex;
@@ -56,7 +57,8 @@ html {
     background: #111;
     border-radius: 40px;
     z-index: 0;
-    transition: transform 0.5s ease-out;
+    /* transition: all 0.5s ease-out; */
+    transition: transform 0.5s ease-out, translate 1s ease-out;
     transform: rotateZ(0px);
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
 
@@ -117,7 +119,7 @@ html {
 }
 
 .card {
-    transition: transform 0.2s ease-out, filter 0.4s ease, top 0.3s ease, z-index 0s ease 0.3s;
+    transition: transform 0.2s ease-out, filter 0.4s ease, top 0.7s ease, z-index 0s ease 0.3s;
     transform-style: preserve-3d;
     width: 75%;
     height: 23%;
@@ -138,14 +140,14 @@ html {
     top: 90px;
 }
 
-#card-2 {
+#meal-card {
     top: 340px;
     z-index: 10;
     background-image: url('resources/meal.png');
     filter: brightness(0.9)
 }
 
-#card-3 {
+#lib-card {
     top: 410px;
     z-index: 11;
     filter: brightness(0.95);
@@ -230,16 +232,30 @@ html {
     margin-right: 69%;
     transition: transform 0.2s ease-out;
 }
-/* .menu-icon:hover {
-    transform: scale(1.1);
-} */
 
 .menu-line {
     transition: transform 0.3s ease-out;
 
 }
 
-/* .menu-line:hover {
-    transform: translateY(2px);
-    transform: translateX(2px);
-} */
+.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-2px);
+    }
+
+    40% {
+        transform: translateY(2px);
+    }
+
+    100% {
+        transform: translateY(-0px);
+    }
+}

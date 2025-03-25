@@ -18,11 +18,41 @@ document.addEventListener('mousemove', (e) => {
     phone_depth.style.transform = `rotateX(${offY}deg) rotateY(${offX}deg) translateX(${-perX*5}px) translateY(${-perY*5}px)`;
 });
 
+// document.addEventListener('click',async () => {
+//     phone.style.zIndex = 0;
+//     phone_depth.style.zIndex = 8;
+//     phone.style.transform = `rotateY(180deg) translateY(-30px)`;
+//     phone_depth.style.transform = `rotateY(180deg) translateY(-30px)`;
+
+
+//     await new Promise(r => setTimeout(r, 250));
+
+//     phone.style.zIndex = 8;
+//     phone_depth.style.zIndex = 0;
+//     phone.style.transform = `rotateY(360deg) translateY(30px)`;
+//     phone_depth.style.transform = `rotateY(360deg) translateY(30px)`;
+
+
+// })
+
 const cards = document.querySelectorAll('.card');
+const card_type = document.getElementById('card-type');
+const card_title = document.getElementById('card-title');
 
 cards.forEach((card, index) => {
     card.addEventListener('click', () => {
         active = index;
+        if (card.id === "id-card") {
+            card_type.innerText = "Matriculation";
+        } else if (card.id === "meal-card") {
+            card_type.innerText = "Meal";
+        } else {
+            card_type.innerText = "Library";
+        }
+        card_title.classList.add("shake");
+        setTimeout(() => {
+            card_title.classList.remove("shake");
+          }, 500);
 
         cards.forEach((c, i) => {
             if (i == active) {
@@ -33,7 +63,6 @@ cards.forEach((card, index) => {
                 c.style.top =  `410px`;
                 c.style.zIndex = 11;
                 c.style.filter = `brightness(0.95)`;
-
             } else {
                 c.style.top =  `340px`;
                 c.style.zIndex = 10;
@@ -43,27 +72,6 @@ cards.forEach((card, index) => {
 
     })
 })
-
-// const maxTilt = 20;
-
-// cards.forEach(card => {
-//     card.addEventListener('mousemove', (e) => {
-//         const { left, top, width, height } = card.getBoundingClientRect();
-
-//         const x = ((e.clientX - left) / width - 0.5) * 2;
-//         const y = ((e.clientY - top) / height - 0.5) * -2;
-
-//         const tiltX = y * maxTilt;
-//         const tiltY = x * maxTilt;
-
-//         card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-
-//     });
-//     card.addEventListener('mouseleave', () => {
-//         card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-//     });
-// });
 
 const lines = document.querySelectorAll('.menu-line');
 const menu_icon = document.querySelector('.menu-icon');
