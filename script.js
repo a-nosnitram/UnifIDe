@@ -18,7 +18,32 @@ document.addEventListener('mousemove', (e) => {
     phone_depth.style.transform = `rotateX(${offY}deg) rotateY(${offX}deg) translateX(${-perX*5}px) translateY(${-perY*5}px)`;
 });
 
-// const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.card');
+
+cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+        active = index;
+
+        cards.forEach((c, i) => {
+            if (i == active) {
+                c.style.top =  `90px`;
+                c.style.zIndex = 12;
+                c.style.filter = `brightness(1)`;
+            } else if ((i + 1) % 3 === active) {
+                c.style.top =  `410px`;
+                c.style.zIndex = 11;
+                c.style.filter = `brightness(0.95)`;
+
+            } else {
+                c.style.top =  `340px`;
+                c.style.zIndex = 10;
+                c.style.filter = `brightness(0.9)`;
+            }
+        })
+
+    })
+})
+
 // const maxTilt = 20;
 
 // cards.forEach(card => {

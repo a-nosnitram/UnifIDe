@@ -107,22 +107,25 @@ html {
 }
 
 .home-line {
-    width: 40%;
-    margin-bottom: 2%;
-    opacity: 0.6;
-    margin-left: 5%;
+    left: 50%;
+    transform: translateX(-60%);
+    top: 96%;
+    width: 100px;
+    height: 4px;
+    opacity: 0.5;
+    position: fixed;
 }
 
 .card {
-    filter: brightness(1);
-    transition: transform 0.2s ease-out, filter 0.4s ease;
+    transition: transform 0.2s ease-out, filter 0.4s ease, top 0.3s ease, z-index 0s ease 0.3s;
     transform-style: preserve-3d;
-    width: 80%;
+    width: 75%;
+    height: 23%;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
-    background-size: 110%;
+    background-size: 105%;
     background-position: center;
-    flex: 0.26;
     border-radius: 15px;
+    position: absolute;
 }
 
 .card:hover {
@@ -132,24 +135,22 @@ html {
 
 #id-card {
     background-image: url('resources/id.png');
-    margin-top: 30%;
+    top: 90px;
 }
 
 #card-2 {
-    margin-top: 24%;
+    top: 340px;
     z-index: 10;
     background-image: url('resources/meal.png');
-    position: relative;
     filter: brightness(0.9)
 }
 
 #card-3 {
-    margin-top: -39%;
+    top: 410px;
     z-index: 11;
     filter: brightness(0.95);
     box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.3);
     background-image: url('resources/lib.png');
-    position: relative;
 }
 
 /* that one is meant to hold the perspective */
