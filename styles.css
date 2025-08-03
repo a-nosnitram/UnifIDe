@@ -2,10 +2,12 @@ body,
 html {
     height: 100%;
     margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(180deg, #202D42, #285BAF);
+    /* overscroll-behavior: none; */
     perspective: 1000px;
 }
 
@@ -25,10 +27,20 @@ html {
     }
 }
 
+@keyframes glowwhite_text {
+    from {
+        text-shadow:
+            0 0 0.05em #ffffff6d,
+            0 0 0.1em #ffffff7a;
 
-.container {
-    width: 300px;
-    height: 600px;
+    }
+
+    to {
+        text-shadow:
+            0 0 0.15em #ffffffac,
+            0 0 0.2em #ffffff;
+
+    }
 }
 
 .phone {
@@ -38,7 +50,6 @@ html {
     border-radius: 40px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     transition: transform 0.5s ease-out, translate 1s ease-out;
-    /* transition: all 0.5s ease-out; */
     transform-style: preserve-3d;
     padding-top: 1%;
     display: flex;
@@ -189,12 +200,21 @@ html {
     position: absolute;
 }
 
-.other-cards, .matric-card-title {
+.other-cards,
+.matric-card-title {
     position: absolute;
     margin-top: 90%;
     color: #082d8a;
     /* change this ugly ass font  */
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#other-cards {
+    margin-top: 8%;
+}
+
+#card-title {
+    margin-top: 6%;
 }
 
 .add-wallet-btn {
@@ -258,4 +278,146 @@ html {
     100% {
         transform: translateY(-0px);
     }
+}
+
+.section {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.feature-column {
+    display: flex;
+    flex-direction: column;
+    gap: 500px;
+}
+
+/* Feature item */
+.feature-item-left {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 12px;
+    color: white;
+    max-width: 400px;
+    /* background: red; */
+    transition: all 0.3s ease-in-out;
+
+}
+
+.feature-item-right {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    max-width: 400px;
+    color: white;
+    /* background: red; */
+    transition: all 0.3s ease-in-out;
+
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-item-left .text {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.feature-item-right .text {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.connectors-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.connector-line {
+    position: absolute;
+    background: #7892BE;
+    transform-origin: left center;
+    z-index: 11;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-container,
+.left-container {
+    flex: 1;
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.left-container {
+    align-items: flex-end;
+}
+
+.right-container {
+    align-items: flex-start;
+}
+
+h1 {
+    text-shadow: 0 0 0.2em currentColor;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+p {
+    white-space: wrap;
+    margin-top: 0;
+    padding: 0;
+}
+
+.btn {
+    padding: 0.7rem 1rem;
+    border-radius: 25px;
+    background-color: #648ee2;
+    border: none;
+    color: #fff;
+    transition: all 0.5s ease-out;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn:hover {
+    opacity: 0.5;
+    transform: translateY(-5px)
+}
+
+#about-us-btn,
+#problem-btn {
+    top: 50%;
+}
+
+h4 {
+    margin: none;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #fff;
+}
+
+.feature-item-left.highlight,
+.feature-item-right.highlight {
+    transform: scale(1.03);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease-in-out;
 }
