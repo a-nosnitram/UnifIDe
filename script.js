@@ -103,6 +103,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
+
 function drawConnectors() {
     const layer = document.querySelector('.connectors-layer');
     layer.innerHTML = ''; // clear old lines
@@ -170,23 +172,41 @@ window.addEventListener('resize', drawConnectors);
 window.addEventListener('scroll', drawConnectors);
 
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const features = document.querySelectorAll("[data-target]");
+document.addEventListener("DOMContentLoaded", () => {
+    const features = document.querySelectorAll("[data-target]");
 
-        features.forEach((feature) => {
-            const targetSelector = feature.getAttribute("data-target");
-            const target = document.querySelector(targetSelector);
-            if (!target) return;
+    features.forEach((feature) => {
+        const targetSelector = feature.getAttribute("data-target");
+        const target = document.querySelector(targetSelector);
+        if (!target) return;
 
-            target.addEventListener("mouseenter", () => {
-                feature.classList.add("highlight");
-            });
+        target.addEventListener("mouseenter", () => {
+            feature.classList.add("highlight");
+        });
 
-            target.addEventListener("mouseleave", () => {
-                feature.classList.remove("highlight");
-            });
+        target.addEventListener("mouseleave", () => {
+            feature.classList.remove("highlight");
         });
     });
+});
 
 const connectorsLayer = document.querySelector('.connectors-layer');
 connectorsLayer.style.top = document.querySelector('.header').offsetHeight + 'px';
+
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            // observer.unobserve(entry.target);
+        } else {
+            entry.target.classList.remove('reveal');
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+document.querySelectorAll('.grid-item').forEach(item => {
+    observer.observe(item);
+});
