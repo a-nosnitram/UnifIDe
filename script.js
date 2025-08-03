@@ -187,3 +187,6 @@ window.addEventListener('scroll', drawConnectors);
             });
         });
     });
+
+const connectorsLayer = document.querySelector('.connectors-layer');
+connectorsLayer.style.top = document.querySelector('.header').offsetHeight + 'px';
