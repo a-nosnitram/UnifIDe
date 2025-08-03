@@ -18,23 +18,6 @@ document.addEventListener('mousemove', (e) => {
     phone_depth.style.transform = `rotateX(${offY}deg) rotateY(${offX}deg) translateX(${-perX * 5}px) translateY(${-perY * 5}px)`;
 });
 
-// document.addEventListener('click',async () => {
-//     phone.style.zIndex = 0;
-//     phone_depth.style.zIndex = 8;
-//     phone.style.transform = `rotateY(180deg) translateY(-30px)`;
-//     phone_depth.style.transform = `rotateY(180deg) translateY(-30px)`;
-
-
-//     await new Promise(r => setTimeout(r, 250));
-
-//     phone.style.zIndex = 8;
-//     phone_depth.style.zIndex = 0;
-//     phone.style.transform = `rotateY(360deg) translateY(30px)`;
-//     phone_depth.style.transform = `rotateY(360deg) translateY(30px)`;
-
-
-// })
-
 const cards = document.querySelectorAll('.card');
 const card_type = document.getElementById('card-type');
 const card_title = document.getElementById('card-title');
@@ -102,8 +85,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
-
-
 
 function drawConnectors() {
     const layer = document.querySelector('.connectors-layer');
@@ -194,19 +175,56 @@ const connectorsLayer = document.querySelector('.connectors-layer');
 connectorsLayer.style.top = document.querySelector('.header').offsetHeight + 'px';
 
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-            // observer.unobserve(entry.target);
-        } else {
-            entry.target.classList.remove('reveal');
-        }
-    });
-}, {
-    threshold: 0.2
-});
+// const observer = new IntersectionObserver(entries => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//             entry.target.classList.add('reveal');
+//             // observer.unobserve(entry.target);
+//         } else {
+//             entry.target.classList.remove('reveal');
+//         }
+//     });
+// }, {
+//     threshold: 0.2
+// });
+
+// document.querySelectorAll('.grid-item').forEach(item => {
+//     observer.observe(item);
+// });
 
 document.querySelectorAll('.grid-item').forEach(item => {
-    observer.observe(item);
+    let targetX = 50;
+    let targetY = 50;
+    let currentX = 50;
+    let currentY = 50;
+    let animationFrame;
+
+    const update = () => {
+        // Smoothly move current toward target
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+
+        item.style.setProperty('--x', `${currentX}%`);
+        item.style.setProperty('--y', `${currentY}%`);
+
+        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+            animationFrame = requestAnimationFrame(update);
+        }
+    };
+
+    item.addEventListener('mousemove', e => {
+        const rect = item.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        targetY = ((e.clientY - rect.top) / rect.height) * 100;
+
+        cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(update);
+    });
+
+    item.addEventListener('mouseleave', () => {
+        targetX = 50;
+        targetY = 50;
+        cancelAnimationFrame(animationFrame);
+        animationFrame = requestAnimationFrame(update);
+    });
 });
