@@ -545,3 +545,18 @@
      color: #ccc;
      max-width: 70%;
  }
+
+ .grid-item .icon {
+     position: absolute;
+     top: 50px;
+     left: 30px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #fff;
+ }
+
+ .grid-item  .feather {
+     width: 70px;
+     height: 70px;
+ }
