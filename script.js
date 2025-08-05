@@ -228,3 +228,47 @@ document.querySelectorAll('.grid-item').forEach(item => {
         animationFrame = requestAnimationFrame(update);
     });
 });
+
+
+function downloadFile(filename) {
+    const link = document.createElement('a');
+    link.href = `resources/${filename}`;
+    link.download = filename || url.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// hover gallery horizontal
+const galleryItems = document.querySelectorAll('.hover-gallery-item');
+const galleryContainer = document.querySelector('.hover-gallery-container');
+const defaultItem = document.querySelector('#default');
+
+galleryItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        galleryItems.forEach(i => i.style.flexGrow = '1'); // shrink others
+        item.style.flexGrow = '8'; // expand hovered one
+        item.classList.add('expanded');
+    });
+
+    item.addEventListener('mouseleave', () => {
+        item.style.flexGrow = '1'; // shrink back when not hovered
+        item.classList.remove('expanded');
+    });
+});
+
+galleryContainer.addEventListener('mouseleave', () => {
+    galleryItems.forEach(i => i.style.flexGrow = '1');
+    defaultItem.style.flexGrow = '8'; // restore default focus
+    defaultItem.classList.add('expanded');
+});
+
+// document.querySelectorAll('.hover-gallery-item').forEach(item => {
+//   item.addEventListener('mousemove', (e) => {
+//     const rect = item.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+//     item.style.setProperty('--x', `${x}px`);
+//     item.style.setProperty('--y', `${y}px`);
+//   });
+// });
